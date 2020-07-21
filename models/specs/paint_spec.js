@@ -23,7 +23,12 @@ describe('Paint', function () {
         paint.empty();
         const actual = paint.isEmpty();
         assert.strictEqual(actual, true);
-    })
+    });
     
+    it('should be able to reduce amount of paint', function () {
+        paint.reduceAmount(5);
+        const actual = paint.amount;
+        assert.strictEqual(actual, 5);
+    });
 
 });
