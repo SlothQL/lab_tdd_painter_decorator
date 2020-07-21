@@ -3,14 +3,8 @@ const Room = function(area) {
     this.painted = 0;
 };
 
-Room.prototype.getPainted = function () {
-    return this.painted = this.area;
+Room.prototype.getPainted = function (litres) {
+    return this.painted += litres;
 }
-
-
-
-
-
-
 
 module.exports = Room;

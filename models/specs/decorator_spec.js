@@ -13,6 +13,7 @@ describe('decorator', function() {
     beforeEach(function(){
         decorator = new Decorator();
         paint = new Paint(7);
+        paint2 = new Paint(7);
         room = new Room(30);
         room2 = new Room(10);
     })
@@ -37,33 +38,19 @@ describe('decorator', function() {
 
     it('should be able to check if it has enough paint for room', function () {
         decorator.addPaint(paint);
-        decorator.addPaint(paint);
+        decorator.addPaint(paint2);
         const actual = decorator.isEnoughPaint(room);
         assert.strictEqual(actual, false);
     });
 
     it('should be able to paint room if enough paint', function() {
         decorator.addPaint(paint);
-        decorator.addPaint(paint);
-        const actual = decorator.paintRoom(room2);
-        const actualRoom = room2.painted;
-        assert.strictEqual(actual, true);
-        assert.strictEqual(actualRoom, 10);
+        decorator.addPaint(paint2);
+        decorator.paintRoom(room2);
+        //const actual = decorator.numberOfLitres();
+        assert.strictEqual(decorator.numberOfLitres(), 4);
+        assert.strictEqual(room2.painted, 10)
     });
+    
 
-    xit('should be able to decrease number of liters of paint', function() {
-        decorator.addPaint(paint);
-        decorator.addPaint(paint);
-        decorator.decreaseNumberOfLiters(room2);
-        const actual = decorator.numberOfLitres();
-        assert.strictEqual(actual, 4);
-    })
-
-    xit('should be able to decrease amount of paint when painting a room', function() {
-        decorator.addPaint(paint);
-        decorator.addPaint(paint);
-        decorator.paintRoom(room2)
-        const actual = decorator.numberOfLitres();
-        assert.strictEqual(actual, 4);
-    });
 });

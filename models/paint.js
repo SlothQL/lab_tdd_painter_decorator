@@ -15,7 +15,7 @@ Paint.prototype.empty = function() {
     return this.amount = 0;
 }
 
-Paint.prototype.reduceAmount = function (number) {
+Paint.prototype.reduceAmount = function(number) {
     return this.amount -= number;
 }
 

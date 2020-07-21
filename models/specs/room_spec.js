@@ -20,7 +20,7 @@ describe('room', function() {
     });
 
     it('should be able to be painted', function() {
-        room.getPainted()
+        room.getPainted(30)
         const actual = room.painted;
         assert.strictEqual(actual, 30);
 

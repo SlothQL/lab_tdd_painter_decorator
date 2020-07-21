@@ -19,22 +19,25 @@ Decorator.prototype.numberOfLitres = function() {
 }
 
 Decorator.prototype.isEnoughPaint = function(room) {
-    return (this.numberOfLitres() >= room.area)
+    return (this.numberOfLitres() >= room.area) ? true : false;
 }
 
 Decorator.prototype.paintRoom = function(room) {
     if (this.isEnoughPaint(room)) {
-        this.decreaseNumberOfLiters(room);
-        room.getPainted();
-        return true;
-    } else {
-        return false;
+        for (paint of this.stock) {
+            let areaToPaint = (room.area - room.painted);
+            if (areaToPaint >= paint.amount) {
+                room.painted += paint.amount;
+                paint.amount = 0;
+            } else {
+                paint.amount -= areaToPaint;
+                room.painted = room.area;
+            }
+        }
     }
 };
 
-Decorator.prototype.decreaseNumberOfLiters = function(room) {
-    liters = this.numberOfLitres();
-    return liters = liters - room.area;
-}
+
+
 
 module.exports = Decorator;
