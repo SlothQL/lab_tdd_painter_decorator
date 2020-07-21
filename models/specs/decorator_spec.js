@@ -47,10 +47,17 @@ describe('decorator', function() {
         decorator.addPaint(paint);
         decorator.addPaint(paint2);
         decorator.paintRoom(room2);
-        //const actual = decorator.numberOfLitres();
         assert.strictEqual(decorator.numberOfLitres(), 4);
         assert.strictEqual(room2.painted, 10)
     });
     
+    it('should be able to remove empty cans', function() {
+        decorator.addPaint(paint);
+        decorator.addPaint(paint2);
+        decorator.paintRoom(room2);
+        decorator.removeEmptyPaint();
+        const actual = decorator.numberOfPaints();
+        assert.strictEqual(actual, 1)
+    })
 
 });

@@ -28,14 +28,19 @@ Decorator.prototype.paintRoom = function(room) {
             let areaToPaint = (room.area - room.painted);
             if (areaToPaint >= paint.amount) {
                 room.painted += paint.amount;
-                paint.amount = 0;
+                paint.empty();
             } else {
-                paint.amount -= areaToPaint;
+                paint.reduceAmount(areaToPaint);
                 room.painted = room.area;
             }
         }
     }
 };
+
+Decorator.prototype.removeEmptyPaint = function() {
+    let stockWithPaint = this.stock.filter(paint => paint.amount > 0);
+    this.stock = stockWithPaint;
+}
 
 
 
